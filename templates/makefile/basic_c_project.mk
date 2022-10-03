@@ -15,9 +15,9 @@ OBJS=$(subst $(SRC_DIR), $(BUILD_DIR), $(SRCS:.c=.o))
 all: $(OBJS)
 	$(CC) $(CFLAGS) -o $(BUILD_DIR)/$(TARGET) $^ $(LDFLAGS)
 
-$(OBJS): $(SRCS)
+$(BUILD_DIR)/%.o: %.c
 	mkdir -p $(BUILD_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $^ -o $@
 
 run: $(BUILD_DIR)/$(TARGET)
 	@$(BUILD_DIR)/$(TARGET)
